@@ -7,34 +7,48 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
+import javafx.scene.control.Label;
 import java.awt.*;
 
 public class Main extends Application {
+    Stage window;
+    Scene scene1, scene2;
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception{
  //       Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        Group root = new Group();
-        Text txt = new Text("Sup??");
-        TextField nf = new TextField();
-        Button btn = new Button();
-        btn.setText("ask sup???");
-        btn.setOnAction(event -> System.out.printf("sup %s %n???", nf.getText()));
+        window = primaryStage;
 
-        VBox box = new VBox();
-        root.getChildren().add(box);
-        box.getChildren().addAll(txt, btn, nf);
-        primaryStage.setTitle("Sup");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
+        Label label1 = new Label("welcome to scene 1");
+        Button b1 = new Button("go to scene 2");
+        b1.setOnAction(e -> window.setScene(scene2));
+
+        VBox l1 = new VBox(20);
+        l1.getChildren().addAll(label1, b1);
+        scene1 = new Scene(l1, 200, 200);
+
+
+        Button b2 = new Button("go to scene 1");
+        b2.setOnAction(e -> window.setScene(scene1));
+
+        StackPane l2 = new StackPane();
+        l2.getChildren().addAll(b2);
+        scene2 = new Scene(l2, 300, 200);
+
+        window.setScene(scene1);
+        window.setTitle("switch scene");
+        window.show();
+
+
     }
 
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+
 }
