@@ -34,7 +34,7 @@ public class Main extends Application {
 
 
         Button b2 = new Button("go to alertbox");
-        b2.setOnAction(e -> AlertBox.display("Wow", "I am exited! javafx is awesome"));
+        b2.setOnAction(e -> ConfirmBox.display());
 
         StackPane l2 = new StackPane();
         l2.getChildren().addAll(b2);
