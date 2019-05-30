@@ -1,5 +1,3 @@
-package sample;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -35,8 +33,8 @@ public class Main extends Application {
         scene1 = new Scene(l1, 200, 200);
 
 
-        Button b2 = new Button("go to scene 1");
-        b2.setOnAction(e -> window.setScene(scene1));
+        Button b2 = new Button("go to alertbox");
+        b2.setOnAction(e -> AlertBox.display("Wow", "I am exited! javafx is awesome"));
 
         StackPane l2 = new StackPane();
         l2.getChildren().addAll(b2);
