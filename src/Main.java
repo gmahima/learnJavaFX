@@ -28,13 +28,19 @@ public class Main extends Application {
         Button b1 = new Button("go to scene 2");
         b1.setOnAction(e -> window.setScene(scene2));
 
+        Button b3 = new Button("save");
+        b3.setOnAction(e -> closeProg());
+
         VBox l1 = new VBox(20);
-        l1.getChildren().addAll(label1, b1);
+        l1.getChildren().addAll(label1, b1, b3);
         scene1 = new Scene(l1, 200, 200);
 
 
-        Button b2 = new Button("go to alertbox");
-        b2.setOnAction(e -> ConfirmBox.display());
+        Button b2 = new Button("go to confirmbox");
+        b2.setOnAction(e -> {
+            boolean result = ConfirmBox.display("cb", "are you sure");
+            System.out.print(result);
+        });
 
         StackPane l2 = new StackPane();
         l2.getChildren().addAll(b2);
@@ -42,8 +48,20 @@ public class Main extends Application {
 
         window.setScene(scene1);
         window.setTitle("switch scene");
+        window.setOnCloseRequest(e -> {
+            e.consume();
+            closeProg();
+        });
         window.show();
 
+
+    }
+    private void closeProg() {
+        Boolean answer = ConfirmBox.display("title", "sure?");
+        if(answer) {
+            System.out.print("saved");
+            window.close();
+        }
 
     }
 

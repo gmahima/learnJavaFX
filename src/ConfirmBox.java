@@ -18,18 +18,32 @@ import javafx.scene.control.Label;
 import java.awt.*;
 
 public class ConfirmBox {
-    public static void display() {
+    public static Boolean answer;
+    public static boolean display(String title, String message) {
         Stage window = new Stage();
-        window.setTitle("confirmBox");
+        window.initModality(Modality.APPLICATION_MODAL);
+
+        window.setTitle(title);
+        Label label = new Label();
+        label.setText(message);
         Button y = new Button("yes");
-        y.setOnAction(e -> System.out.print("y"));
+        y.setOnAction(e -> {
+            answer = true;
+            window.close();
+        });
         Button n = new Button("no");
-        n.setOnAction(e -> System.out.print("n"));
+        n.setOnAction(e -> {
+            answer = false;
+            window.close();
+        });
+        VBox vb = new VBox(20);
         HBox hb = new HBox(20);
         hb.getChildren().addAll(y, n);
-        Scene scene = new Scene(hb, 300, 300);
+        vb.getChildren().addAll(label, hb);
+        Scene scene = new Scene(vb, 300, 300);
         window.setScene(scene);
-        window.show();
+        window.showAndWait(); //show() throws null pointer exception
+        return answer;
     }
 
 }
