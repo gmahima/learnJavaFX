@@ -38,8 +38,8 @@ public class Main extends Application {
 
         Button b2 = new Button("go to confirmbox");
         b2.setOnAction(e -> {
-            boolean result = ConfirmBox.display("cb", "are you sure");
-            System.out.print(result);
+           g.display();
+
         });
 
         StackPane l2 = new StackPane();
