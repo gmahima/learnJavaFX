@@ -13,6 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.beans.value.ChangeListener;
 import javafx.scene.control.Label;
 import java.awt.*;
 
@@ -30,6 +31,15 @@ public class Dropdown {
 
         choiceBox.getItems().addAll("apple", "mango", "peach", "cherry", "pineapple");
         choiceBox.setValue("apple");
+
+        choiceBox.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
+            System.out.println(v);
+            System.out.println("old: " + oldValue);
+            System.out.println("new: " + newValue);
+        });
+
+
+
 
         Button cb = new Button("X");
         cb.setOnAction(e -> {
