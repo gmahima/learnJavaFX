@@ -38,6 +38,9 @@ public class g {
         passInput.setPromptText("password");
         GridPane.setConstraints(passInput, 1, 1);
         Button login = new Button("login");
+        login.setOnAction(e -> {
+            isInt(nameInput, nameInput.getText());
+        });
         GridPane.setConstraints(login, 1, 2);
 
         grid.getChildren().addAll(nameLabel, passLabel, nameInput, passInput, login);
@@ -46,6 +49,19 @@ public class g {
         Scene scene = new Scene(grid, 300, 300);
         window.setScene(scene);
         window.showAndWait();
+
+    }
+    private static boolean isInt(TextField input, String message) {
+        try {
+            int age = Integer.parseInt(input.getText());
+            System.out.println(age);
+            return true;
+
+
+        } catch(NumberFormatException e) {
+            System.out.print("error:" + message + "is not a number");
+            return false;
+        }
 
     }
 }
