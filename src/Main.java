@@ -38,7 +38,7 @@ public class Main extends Application {
 
         Button b2 = new Button("go to confirmbox");
         b2.setOnAction(e -> {
-            Combobox.display();
+            Listview.display();
 
         });
 
